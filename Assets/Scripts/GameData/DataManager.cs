@@ -8,43 +8,11 @@ public class DataManager : MonoBehaviour
 {
     string extensionFile = ".gamedata";
     string fileName = "saves";
-    
-    /*
-     Forma tradicional
-     
-    public void SaveData(GameData gameData)
-    {
-        string filepath = $"{Application.persistentDataPath}/saves{extensionFile}";
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create($"{filepath}");
-        bf.Serialize(file, gameData);
-        file.Close();
-        Debug.Log($"Saved path: {filepath}");
-    }
-
-    public GameData LoadData()
-    {
-        string filepath = $"{Application.persistentDataPath}/saves{extensionFile}";
-        GameData gameData = new GameData();
-
-        if(File.Exists($"{filepath}"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(filepath, FileMode.Open);
-            gameData = bf.Deserialize(file) as GameData;
-            file.Close();
-        }
-
-        return gameData;
-    }
-
-    */
-
 
     // Json 
      public void SaveData(GameData gameData)
     {
-        string filepath = $"{Application.persistentDataPath}/saves{extensionFile}";
+        string filepath = $"{Application.persistentDataPath}/{fileName}{extensionFile}";
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(filepath);
 
