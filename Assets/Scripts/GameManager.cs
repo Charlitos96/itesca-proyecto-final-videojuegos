@@ -19,14 +19,26 @@ public class GameManager : MonoBehaviour
     GameObject textoInteractuar;
     [SerializeField]
     Player player;
+    [SerializeField]
+    Score score;
     GameData gameData;
 
     public GameObject TextBox { get => textBox; }
     public GameObject TextoInteractuar { get => textoInteractuar; }
+    public Score GetScore { get => score; }
 
     void Awake()
     {
-        instance = this;
+        if(!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        //instance = this;
     }
 
     void Start()
@@ -38,7 +50,8 @@ public class GameManager : MonoBehaviour
     {
         Vector3 pos = player.transform.position;
         Quaternion dir = player.transform.rotation;
-        gameData = new GameData(pos, dir);
+        int score = GetScore.GetScore;
+        gameData = new GameData(pos, dir, score);
         dataManager.SaveData(gameData);
     }
 
@@ -50,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             player.transform.rotation = gameData.Dir;
         }
+        GetScore.SetScore(gameData.Score);
     }
 
     void Update()

@@ -34,6 +34,29 @@ public class Player : Character
         animator.SetFloat("move", Mathf.Abs(Movement.Axis.magnitude));
     }
 
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.CompareTag("Coin"))
+        {
+            //GameManager.instance.Save();
+            Coin coin = col.GetComponent<Coin>();
+            GameManager.instance.GetScore.AddPoints(coin.Points);
+            Destroy(col.gameObject);
+            //audioSource.PlayOneShot(GameManager.instance.CoinSound, 7f);
+        }
+        /*
+        if(col.CompareTag("death"))
+        {
+            Destroy(gameObject);
+            //SceneManager.LoadScene("level01");
+        }
+        if(col.CompareTag("end"))
+        {
+            Debug.Log("Level ended");
+            //SceneManager.LoadScene("level02");
+        }
+        */
+    }
     void OnTriggerStay(Collider col)
     {
         if(col.CompareTag("NPC"))
