@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading;
+using Core.Movement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,20 +32,24 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        gameData = dataManager.LoadData();
-        Debug.Log($"Position: {gameData.Position}");
-        player.transform.position = gameData.Position;
-        /*Debug.Log($"posX: {gameData.PosX}");
-        Debug.Log($"posY: {gameData.PosY}");
-        player.transform.position = new Vector2(gameData.PosX,gameData.PosY);*/
+        Load();
     }
     public void Save()
     {
-        /*Vector2 pos = player.transform.position;
-        gameData = new GameData(pos.x, pos.y);*/
         Vector3 pos = player.transform.position;
-        gameData = new GameData(pos);
+        Quaternion dir = player.transform.rotation;
+        gameData = new GameData(pos, dir);
         dataManager.SaveData(gameData);
+    }
+
+    public void Load()
+    {
+        gameData = dataManager.LoadData();
+        player.transform.position = gameData.Position;
+        if (gameData.Dir != null)
+        {
+            player.transform.rotation = gameData.Dir;
+        }
     }
 
     void Update()

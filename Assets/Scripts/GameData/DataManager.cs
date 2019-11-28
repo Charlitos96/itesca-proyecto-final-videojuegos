@@ -7,6 +7,7 @@ using System.IO;
 public class DataManager : MonoBehaviour
 {
     string extensionFile = ".gamedata";
+    string fileName = "saves";
     
     /*
      Forma tradicional
@@ -56,7 +57,7 @@ public class DataManager : MonoBehaviour
 
     public GameData LoadData()
     {
-        string filepath = $"{Application.persistentDataPath}/saves{extensionFile}";
+        string filepath = $"{Application.persistentDataPath}/{fileName}{extensionFile}";
         GameData gameData = new GameData();
 
         if(File.Exists(filepath))

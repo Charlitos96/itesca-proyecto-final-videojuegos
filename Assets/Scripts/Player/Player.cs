@@ -38,7 +38,6 @@ public class Player : Character
     {
         if(col.CompareTag("NPC"))
         {
-            Debug.Log("Pues esto funciona");
             if (npc == null){
                 npc = col.gameObject.GetComponent<NPC>();
                 GameManager.instance.TextoInteractuar.SetActive(true);

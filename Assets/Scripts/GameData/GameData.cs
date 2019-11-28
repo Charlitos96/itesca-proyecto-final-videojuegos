@@ -13,6 +13,8 @@ public class GameData
 
     [SerializeField]
     Vector3 position;
+    [SerializeField]
+    Quaternion dir;
 
     //public float PosX { get => posX; set => posX = value; }
     //public float PosY { get => posY; set => posY = value; }
@@ -28,10 +30,12 @@ public class GameData
 
     }
 
-    public GameData(Vector2 position)
+    public GameData(Vector3 position, Quaternion dir)
     {
         this.position = position;
+        this.dir = dir;
     }
 
-    public Vector2 Position { get => position; set => position = value; }
+    public Vector3 Position { get => position; set => position = value; }
+    public Quaternion Dir { get => dir; set => dir = value; }
 }
