@@ -50,6 +50,7 @@ public class Player : Character
                     talking = true;
                     GameManager.instance.TextoInteractuar.SetActive(false);
                     GameManager.instance.MostrarTexto(npc.Text);
+                    GameManager.instance.Save();
                 }else{
                     talking = false;
                     GameManager.instance.OcultarTexto();

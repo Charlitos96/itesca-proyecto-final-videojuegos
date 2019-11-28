@@ -120,6 +120,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &309003458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 603542712450483038, guid: accc315e5a3b0f54281cb663bd0f3be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1526341206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309003459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309003458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f83ba89b42281428f4d8cc8922321e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &334951969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -349,6 +367,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &514355611
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514355608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1373,16 @@ PrefabInstance:
       propertyPath: textoInteractuar
       value: 
       objectReference: {fileID: 1406262236}
+    - target: {fileID: 603542712450483037, guid: accc315e5a3b0f54281cb663bd0f3be9,
+        type: 3}
+      propertyPath: dataManager
+      value: 
+      objectReference: {fileID: 309003459}
+    - target: {fileID: 603542712450483037, guid: accc315e5a3b0f54281cb663bd0f3be9,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1209930052}
     - target: {fileID: 603542712450483038, guid: accc315e5a3b0f54281cb663bd0f3be9,
         type: 3}
       propertyPath: m_Name
