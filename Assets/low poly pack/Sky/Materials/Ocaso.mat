@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Cubemap
+  m_Name: Ocaso
   m_Shader: {fileID: 103, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -27,4 +27,4 @@ Material:
     - _Exposure: 0.83
     - _Rotation: 0
     m_Colors:
-    - _Tint: {r: 0.47708258, g: 0.50920403, b: 0.6698113, a: 0.5}
+    - _Tint: {r: 0.6981132, g: 0.343667, b: 0.02963687, a: 0.5}
