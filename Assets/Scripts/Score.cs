@@ -20,7 +20,7 @@ public class Score : MonoBehaviour
         if(points > 0)
         {
             score = points;
-            textScore.text = $"Score: {GetScore}";
+            textScore.text = $"x {GetScore}";
         }
     }
     public void AddPoints(int points)
@@ -28,13 +28,13 @@ public class Score : MonoBehaviour
         if(points > 0)
         {
             score += points;
-            textScore.text = $"Score: {GetScore}";
+            textScore.text = $"x {GetScore}";
         }
     }
 
     public void ResetScore()
     {
         score = 0;
-        textScore.text = $"Score: {GetScore}";
+        textScore.text = $"x {GetScore}";
     }
 }

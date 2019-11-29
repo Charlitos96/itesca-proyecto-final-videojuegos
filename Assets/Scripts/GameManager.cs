@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
         Vector3 pos = player.transform.position;
         Quaternion dir = player.transform.rotation;
         int score = GetScore.GetScore;
-        gameData = new GameData(pos, dir, score);
+        int healt = player.Health;
+        gameData = new GameData(pos, dir, score, healt);
         dataManager.SaveData(gameData);
     }
 
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
             player.transform.rotation = gameData.Dir;
         }
         GetScore.SetScore(gameData.Score);
+        player.Health = gameData.Healt;
     }
 
     void Update()
