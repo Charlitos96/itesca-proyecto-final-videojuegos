@@ -6,14 +6,17 @@ using Core.Movement;
 
 public class Player : Character
 {
-
+/*
     [SerializeField]
     LayerMask groundLayer;
 
     [SerializeField]
-    float rayDistance;
+    float rayDistance;*/
     [SerializeField]
     int jumpForce;
+    [SerializeField]
+    int maxJump;
+    int currentJumps;
     Rigidbody rigidBody;
     Animator animator;
     NPC npc;
@@ -24,6 +27,7 @@ public class Player : Character
         rigidBody = GetComponent<Rigidbody>();
         canTalk = true;
         talking = false;
+        currentJumps = 0;
     }
 
     bool canTalk;
@@ -46,9 +50,12 @@ public class Player : Character
     
     public void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetButtonDown("Jump") && maxJump > currentJumps)
         {
-            rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            //rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            currentJumps++;
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         /*
         //grounding
@@ -84,8 +91,11 @@ public class Player : Character
                 Health = 0;
             }
             GameManager.instance.GetHealth.RefreshHealth(Health);
-            Debug.Log($"Get Damage:{enemy.Power}");
-            Debug.Log($"Player:{Health}");
+        }
+        if(col.CompareTag("Ground"))
+        {
+            Debug.Log("Piso tierra");
+            currentJumps = 0;
         }
         /*
         if(col.CompareTag("death"))

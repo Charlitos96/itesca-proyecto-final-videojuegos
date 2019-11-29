@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
             player.Health = gameData.Health;
         }
         GetHealth.RefreshHealth(player.Health);
-        Debug.Log($"GameManager:{player.Health}");
     }
 
     void Update()
