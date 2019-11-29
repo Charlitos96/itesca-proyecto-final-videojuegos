@@ -7,12 +7,21 @@ using Core.Movement;
 public class Player : Character
 {
 
+    [SerializeField]
+    LayerMask groundLayer;
+
+    [SerializeField]
+    float rayDistance;
+    [SerializeField]
+    int jumpForce;
+    Rigidbody rigidBody;
     Animator animator;
     NPC npc;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody>();
         canTalk = true;
         talking = false;
     }
@@ -26,12 +35,34 @@ public class Player : Character
         if (!talking)
             base.Update();
         btnTalk = Input.GetButtonDown("Talk");
+        Jump();
     }
 
     public override void Move()
     {
         base.Move();
         animator.SetFloat("move", Mathf.Abs(Movement.Axis.magnitude));
+    }
+    
+    public void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        }
+        /*
+        //grounding
+        RaycastHit hit = Physics.Raycast(
+            transform.position,
+            -transform.up, 
+            rayDistance,
+            groundLayer
+        );
+        if(hit.collider)
+        {
+            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+        */
     }
 
     void OnTriggerEnter(Collider col)
@@ -43,6 +74,18 @@ public class Player : Character
             GameManager.instance.GetScore.AddPoints(coin.Points);
             Destroy(col.gameObject);
             //audioSource.PlayOneShot(GameManager.instance.CoinSound, 7f);
+        }
+        if(col.CompareTag("Enemy"))
+        {
+            Enemy enemy = col.GetComponent<Enemy>();
+            Health -= enemy.Power;
+            if(Health < 0)
+            {
+                Health = 0;
+            }
+            GameManager.instance.GetHealth.RefreshHealth(Health);
+            Debug.Log($"Get Damage:{enemy.Power}");
+            Debug.Log($"Player:{Health}");
         }
         /*
         if(col.CompareTag("death"))

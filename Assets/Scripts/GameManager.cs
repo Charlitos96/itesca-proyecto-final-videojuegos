@@ -21,11 +21,14 @@ public class GameManager : MonoBehaviour
     Player player;
     [SerializeField]
     Score score;
+    [SerializeField]
+    Health health;
     GameData gameData;
 
     public GameObject TextBox { get => textBox; }
     public GameObject TextoInteractuar { get => textoInteractuar; }
     public Score GetScore { get => score; }
+    public Health GetHealth { get => health; }
 
     void Awake()
     {
@@ -51,7 +54,8 @@ public class GameManager : MonoBehaviour
         Vector3 pos = player.transform.position;
         Quaternion dir = player.transform.rotation;
         int score = GetScore.GetScore;
-        gameData = new GameData(pos, dir, score);
+        int health = player.Health;
+        gameData = new GameData(pos, dir, score, health);
         dataManager.SaveData(gameData);
     }
 
@@ -64,6 +68,12 @@ public class GameManager : MonoBehaviour
             player.transform.rotation = gameData.Dir;
         }
         GetScore.SetScore(gameData.Score);
+        if(gameData.Health > 0)
+        {
+            player.Health = gameData.Health;
+        }
+        GetHealth.RefreshHealth(player.Health);
+        Debug.Log($"GameManager:{player.Health}");
     }
 
     void Update()

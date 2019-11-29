@@ -6,14 +6,16 @@ using Core.Movement;
 public class Character : MonoBehaviour
 {
     [SerializeField]
-    protected float health;
+    protected int health;
 
     [SerializeField]
     protected float moveSpeed;
 
+    protected float maxHealth;
+
     bool attacked;
 
-    public float Health { get => health; set => health = value; }
+    public int Health { get => health; set => health = value; }
     public bool Attacked { get => attacked; set => attacked = value; }
 
     protected void Update()
@@ -25,4 +27,5 @@ public class Character : MonoBehaviour
     {
         Movement.Move3DTopDown(transform, moveSpeed, Movement.AxisDelta);
     }
+
 }
