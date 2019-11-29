@@ -79,6 +79,13 @@ public class Player : Character
         {
             Enemy enemy = col.GetComponent<Enemy>();
             Health -= enemy.Power;
+            if(Health < 0)
+            {
+                Health = 0;
+            }
+            GameManager.instance.GetHealth.RefreshHealth(Health);
+            Debug.Log($"Get Damage:{enemy.Power}");
+            Debug.Log($"Player:{Health}");
         }
         /*
         if(col.CompareTag("death"))

@@ -17,7 +17,7 @@ public class Score : MonoBehaviour
 
     public void SetScore(int points)
     {
-        if(points > 0)
+        if(points >= 0)
         {
             score = points;
             textScore.text = $"x {GetScore}";
