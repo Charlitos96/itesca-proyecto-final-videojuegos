@@ -47,7 +47,7 @@ MonoBehaviour:
   unitName: "Maga m\xE1gica"
   hp: 300
   initialHp: 300
-  dmg: 40
+  dmg: 30
   dfs: 15
   pos: 1
 --- !u!1001 &7103274479202298601
