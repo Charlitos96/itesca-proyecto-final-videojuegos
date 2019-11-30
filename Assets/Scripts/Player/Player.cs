@@ -18,6 +18,7 @@ public class Player : Character
     [SerializeField]
     int maxJump;
     int currentJumps;
+    bool alive;
     Rigidbody rigidBody;
     Animator animator;
     NPC npc;
@@ -28,7 +29,9 @@ public class Player : Character
         rigidBody = GetComponent<Rigidbody>();
         canTalk = true;
         talking = false;
+        alive = true;
         currentJumps = 0;
+        animator.SetBool("alive", alive); // 1
     }
 
     bool canTalk;
@@ -37,10 +40,16 @@ public class Player : Character
 
     void Update()
     {
-        if (!talking)
-            base.Update();
+        if(alive){
+            if (!talking){
+                base.Update();
+                Jump();
+            }
+        }else{
+            Relive();
+        }
         btnTalk = Input.GetButtonDown("Talk");
-        Jump();
+        //animator.SetBool("alive", alive);
     }
 
     public override void Move()
@@ -51,7 +60,6 @@ public class Player : Character
     
     public void Jump()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
         if(Input.GetButtonDown("Jump") && maxJump > currentJumps)
         {
             //rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
@@ -59,62 +67,72 @@ public class Player : Character
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             //animator.SetTrigger("jump"); // Brinca muy feo
         }
-        /*
-        //grounding
-        RaycastHit hit = Physics.Raycast(
-            transform.position,
-            -transform.up, 
-            rayDistance,
-            groundLayer
-        );
-        if(hit.collider)
+    }
+
+    public void Relive()
+    {
+        if(btnTalk)
         {
-            rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            Health = 80;
+            alive = true;
+            animator.SetBool("alive", alive); // 2
+            GameManager.instance.RestartLevel();
         }
-        */
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if(alive)
         {
-            currentJumps = 0;
-            animator.SetBool("grounding", true);
+            if(collision.gameObject.CompareTag("Ground"))
+            {
+                currentJumps = 0;
+                animator.SetBool("grounding", true);
+            }
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Ground"))
+        if(alive)
         {
-            animator.SetBool("grounding", false);
+            if(collision.gameObject.CompareTag("Ground"))
+            {
+                animator.SetBool("grounding", false);
+            }
         }
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.CompareTag("Coin"))
+        if(alive)
         {
-            //GameManager.instance.Save();
-            Coin coin = col.GetComponent<Coin>();
-            GameManager.instance.GetScore.AddPoints(coin.Points);
-            Destroy(col.gameObject);
-            //audioSource.PlayOneShot(GameManager.instance.CoinSound, 7f);
-        }
-        if(col.CompareTag("Damage"))
-        {
-            Damage damage = col.GetComponent<Damage>();
-            Health -= damage.GetDamage;
-            if(Health < 0)
+            if(col.CompareTag("Coin"))
             {
-                Health = 0;
+                //GameManager.instance.Save();
+                Coin coin = col.GetComponent<Coin>();
+                GameManager.instance.GetScore.AddPoints(coin.Points);
+                Destroy(col.gameObject);
+                //audioSource.PlayOneShot(GameManager.instance.CoinSound, 7f);
             }
-            GameManager.instance.GetHealth.RefreshHealth(Health);
-        }
-        if(col.CompareTag("Portal"))
-        {
-            Debug.Log("Next Level!");
-            SceneManager.LoadScene("Final");
+            if(col.CompareTag("Damage"))
+            {
+                Damage damage = col.GetComponent<Damage>();
+                Health -= damage.GetDamage;
+                if(Health < 0)
+                {
+                    Health = 0;
+                    alive = false;
+                    animator.SetBool("alive", alive); // 3
+                }
+                animator.SetTrigger("damage");
+                GameManager.instance.GetHealth.RefreshHealth(Health);
+            }
+            if(col.CompareTag("Portal"))
+            {
+                Debug.Log("Next Level!");
+                SceneManager.LoadScene("Final");
+            }
         }
         /*
         if(col.CompareTag("death"))
@@ -131,36 +149,43 @@ public class Player : Character
     }
     void OnTriggerStay(Collider col)
     {
-        if(col.CompareTag("NPC"))
+        if(alive)
         {
-            if (npc == null){
-                npc = col.gameObject.GetComponent<NPC>();
-                GameManager.instance.TextoInteractuar.SetActive(true);
-                //GameManager.instance.MostrarTexto("Presiena \"E\" en el teclado o \"B\" en el mando, para hablar.");
-            }
-            if(btnTalk){
-                if(canTalk){
-                    canTalk = false;
-                    talking = true;
-                    GameManager.instance.TextoInteractuar.SetActive(false);
-                    GameManager.instance.MostrarTexto(npc.Text);
-                    GameManager.instance.Save();
-                }else{
-                    talking = false;
-                    GameManager.instance.OcultarTexto();
+            if(col.CompareTag("NPC"))
+            {
+                if (npc == null){
+                    npc = col.gameObject.GetComponent<NPC>();
+                    GameManager.instance.TextoInteractuar.SetActive(true);
+                    //GameManager.instance.MostrarTexto("Presiena \"E\" en el teclado o \"B\" en el mando, para hablar.");
+                }
+                if(btnTalk && alive){
+                    if(canTalk){
+                        canTalk = false;
+                        talking = true;
+                        GameManager.instance.TextoInteractuar.SetActive(false);
+                        GameManager.instance.MostrarTexto(npc.Text);
+                        GameManager.instance.Save();
+                    }else{
+                        talking = false;
+                        GameManager.instance.OcultarTexto();
+                    }
                 }
             }
         }
+        
     }
     void OnTriggerExit(Collider col)
     {
-        if(col.CompareTag("NPC"))
+        if(alive)
         {
-            if (npc != null)
-                npc = null;
-            GameManager.instance.OcultarTexto();
-            GameManager.instance.TextoInteractuar.SetActive(false);
-            canTalk = true;
+            if(col.CompareTag("NPC"))
+            {
+                if (npc != null)
+                    npc = null;
+                GameManager.instance.OcultarTexto();
+                GameManager.instance.TextoInteractuar.SetActive(false);
+                canTalk = true;
+            }
         }
     }
 

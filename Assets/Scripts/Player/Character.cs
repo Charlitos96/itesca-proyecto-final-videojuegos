@@ -30,13 +30,15 @@ public class Character : MonoBehaviour
     {
         if(btnRun)
         {
-            Debug.Log("Running: "+(moveSpeed * 2));
             Movement.Move3DTopDown(transform, (moveSpeed * 2), Movement.AxisDelta);
+            //Rigidbody r = GetComponent<Rigidbody>();
+            //Movement.Move3DTopDownRigidbody(transform, r, moveSpeed, (maxVel *2), Movement.AxisDelta);
         }
         else
         {
-            Debug.Log("Walking: "+(moveSpeed));
             Movement.Move3DTopDown(transform, moveSpeed, Movement.AxisDelta);
+            //Rigidbody r = GetComponent<Rigidbody>();
+            //Movement.Move3DTopDownRigidbody(transform, r, moveSpeed, maxVel, Movement.AxisDelta);
         }
     }
 

@@ -25,5 +25,17 @@ namespace Core.Movement
                 t.rotation = Quaternion.LookRotation(dir);
             }
         }
+        public static void Move3DTopDownRigidbody(Transform t, Rigidbody r, float moveSpeed, float maxVel, Vector3 dir)
+        {
+            //t.Translate(Vector3.forward * moveSpeed * dir.magnitude);
+            //Move
+            r.AddForce(Vector3.forward * moveSpeed * dir.magnitude, ForceMode.Impulse);
+            Vector3 currentVelocity = r.velocity;
+            r.velocity = new Vector3(Mathf.Clamp(currentVelocity.x, -maxVel, maxVel), currentVelocity.y, Mathf.Clamp(currentVelocity.z, -maxVel, maxVel));
+            if(dir != Vector3.zero)
+            {
+                t.rotation = Quaternion.LookRotation(dir);
+            }
+        }
     }
 }

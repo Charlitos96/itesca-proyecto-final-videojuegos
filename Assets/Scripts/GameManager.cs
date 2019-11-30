@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
                 player.Health = gameData.Health;
             }
             //GetHealth.RefreshHealth(player.Health);
+        }else{
+            gameData.Position = player.transform.position;
         }
     }
 
@@ -82,6 +84,12 @@ public class GameManager : MonoBehaviour
     {
         GetScore.Refresh();
         GetHealth.RefreshHealth(player.Health);
+    }
+
+    public void RestartLevel()
+    {
+        player.transform.position = gameData.Position;
+        GetScore.ResetScore();
     }
 
     public void MostrarTexto(string text)
