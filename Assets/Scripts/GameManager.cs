@@ -62,22 +62,26 @@ public class GameManager : MonoBehaviour
     public void Load()
     {
         gameData = dataManager.LoadData();
-        player.transform.position = gameData.Position;
-        if (gameData.Dir != null)
+        if(!gameData.Empty)
         {
-            player.transform.rotation = gameData.Dir;
+            player.transform.position = gameData.Position;
+            if (gameData.Dir != null)
+            {
+                player.transform.rotation = gameData.Dir;
+            }
+            GetScore.SetScore(gameData.Score);
+            if(gameData.Health > 0)
+            {
+                player.Health = gameData.Health;
+            }
+            //GetHealth.RefreshHealth(player.Health);
         }
-        GetScore.SetScore(gameData.Score);
-        if(gameData.Health > 0)
-        {
-            player.Health = gameData.Health;
-        }
-        GetHealth.RefreshHealth(player.Health);
     }
 
     void Update()
     {
-        
+        GetScore.Refresh();
+        GetHealth.RefreshHealth(player.Health);
     }
 
     public void MostrarTexto(string text)

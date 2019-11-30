@@ -101,19 +101,15 @@ public class Player : Character
             Destroy(col.gameObject);
             //audioSource.PlayOneShot(GameManager.instance.CoinSound, 7f);
         }
-        if(col.CompareTag("Enemy"))
+        if(col.CompareTag("Damage"))
         {
-            Enemy enemy = col.GetComponent<Enemy>();
-            Health -= enemy.Power;
+            Damage damage = col.GetComponent<Damage>();
+            Health -= damage.GetDamage;
             if(Health < 0)
             {
                 Health = 0;
             }
             GameManager.instance.GetHealth.RefreshHealth(Health);
-        }
-        if(col.CompareTag("Damage"))
-        {
-            Debug.Log("Auchi D: :c");
         }
         if(col.CompareTag("Portal"))
         {
