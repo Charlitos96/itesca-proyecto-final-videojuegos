@@ -24,11 +24,19 @@ public class Menu : MonoBehaviour
 
         if (up) indice--;
         if (down) indice++;
-
+        
+        /*
+        float mov=Input.GetAxis("Vertical");
+        Debug.Log("valor de input "+ Input.GetAxis("Vertical"));
+        Debug.Log("valor de indice "+ indice);
+        Debug.Log("valor de mov "+ mov);
+        indice += mov >0f ? 1 : mov<0f? -1:0;
+        */
         if(indice > lista.transform.childCount-1) indice = 0;
         else if(indice < 0)indice = lista.transform.childCount-1;
 
-        if(up || down) Dibujar();
+        if(up || down) 
+            Dibujar();
 
         if(Input.GetKeyDown("return")) Accion();
 
@@ -37,6 +45,15 @@ public class Menu : MonoBehaviour
         Transform opcion = lista.transform.GetChild(indice);
         flecha.transform.position = opcion.position;  
     }
+
+    //metodo prub
+    /*public void CambiarEscena(string Item){
+        print("cambiando a la escena" + Item);
+        SceneManager.LoadScene(Item);
+     
+    }
+    */
+
      void Accion(){
         
         Transform opcion = lista.transform.GetChild(indice);
@@ -44,7 +61,9 @@ public class Menu : MonoBehaviour
          if(opcion.gameObject.name == "Salir"){
              print("cerrando juego...");
              Application.Quit();
+                
 
+            
          }else{
              
              SceneManager.LoadScene(opcion.gameObject.name);
