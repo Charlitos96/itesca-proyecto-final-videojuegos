@@ -357,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 3132900859248054517, guid: 8c4830aab1d168147839b83d08b3b8b8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -158.18771
+      value: -158.2
       objectReference: {fileID: 0}
     - target: {fileID: 3132900859248054517, guid: 8c4830aab1d168147839b83d08b3b8b8,
         type: 3}
@@ -367,7 +367,7 @@ PrefabInstance:
     - target: {fileID: 3132900859248054517, guid: 8c4830aab1d168147839b83d08b3b8b8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -233.59842
+      value: -94
       objectReference: {fileID: 0}
     - target: {fileID: 3132900859248054517, guid: 8c4830aab1d168147839b83d08b3b8b8,
         type: 3}
@@ -5962,7 +5962,7 @@ GameObject:
   - component: {fileID: 522546167}
   m_Layer: 0
   m_Name: Mesh243 (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5975,7 +5975,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522546165}
   m_LocalRotation: {x: 0.023080487, y: 0.49176934, z: 0.020099143, w: 0.8701875}
-  m_LocalPosition: {x: -2.783, y: -1.163, z: -0.538}
+  m_LocalPosition: {x: -2.78, y: -1.01, z: -0.53}
   m_LocalScale: {x: 0.25600004, y: 0.25600007, z: 0.25600004}
   m_Children: []
   m_Father: {fileID: 862653990}
@@ -6048,6 +6048,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1371848690957050, guid: d5f13229abd060d4e82aafd4843a0bef, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1580924806186536, guid: d5f13229abd060d4e82aafd4843a0bef, type: 3}
       propertyPath: m_Name
       value: Piedra
@@ -6193,8 +6197,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678439507}
-  m_LocalRotation: {x: 0.19119492, y: 0.016982034, z: -0.012725115, w: 0.9813227}
-  m_LocalPosition: {x: -158.7, y: 80.13, z: -250.27}
+  m_LocalRotation: {x: 0.19119492, y: 0.016981928, z: -0.012725094, w: 0.9813227}
+  m_LocalPosition: {x: -158.71228, y: 80.13, z: -110.671585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6418,6 +6422,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2122832997}
     m_Modifications:
+    - target: {fileID: 1700780402928480, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1714963064719984, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
       propertyPath: m_Name
       value: Pino 3
@@ -6497,10 +6505,10 @@ GameObject:
   - component: {fileID: 796994289}
   - component: {fileID: 796994292}
   - component: {fileID: 796994291}
-  - component: {fileID: 796994290}
+  - component: {fileID: 796994293}
   m_Layer: 0
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6519,20 +6527,6 @@ Transform:
   m_Father: {fileID: 26078759}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &796994290
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796994288}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &796994291
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6579,6 +6573,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796994288}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &796994293
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796994288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000005, y: 0.99999994, z: 6.123236e-17}
+  m_Center: {x: 0.000016212463, y: 0.00000047683716, z: 0}
 --- !u!1 &799439110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1700780402928480, guid: 8002d088fbbbf894f9c06f7f21d90406,
@@ -6606,6 +6613,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1228115380507712, guid: 5007776beb043ae4d8eebe083ac1822f, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1904831276536128, guid: 5007776beb043ae4d8eebe083ac1822f, type: 3}
       propertyPath: m_Name
       value: Pino
@@ -6756,6 +6767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Piedra 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1860703546445676, guid: 55ca6c69149867345a44056719ed70b0, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4508918380756680, guid: 55ca6c69149867345a44056719ed70b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.745495
@@ -6831,9 +6846,10 @@ GameObject:
   - component: {fileID: 977623071}
   - component: {fileID: 977623073}
   - component: {fileID: 977623072}
+  - component: {fileID: 977623074}
   m_Layer: 0
   m_Name: Mesh243 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6898,6 +6914,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977623070}
   m_Mesh: {fileID: 4300484, guid: b2c61055c4a01ad43b08434f8178e1c9, type: 3}
+--- !u!64 &977623074
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977623070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300484, guid: b2c61055c4a01ad43b08434f8178e1c9, type: 3}
 --- !u!1 &977784690
 GameObject:
   m_ObjectHideFlags: 0
@@ -6912,7 +6942,7 @@ GameObject:
   - component: {fileID: 977784692}
   m_Layer: 0
   m_Name: Mesh243 (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6925,7 +6955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977784690}
   m_LocalRotation: {x: 0.023080487, y: 0.49176934, z: 0.020099143, w: 0.8701875}
-  m_LocalPosition: {x: -2.543, y: -1.177, z: -0.538}
+  m_LocalPosition: {x: -2.54, y: -1.02, z: -0.53}
   m_LocalScale: {x: 0.25600004, y: 0.25600007, z: 0.25600004}
   m_Children: []
   m_Father: {fileID: 862653990}
@@ -7160,6 +7190,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1302381773271742, guid: ab5cfcdb818ae4a43a8ff18f1fedb803, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1332854129021298, guid: ab5cfcdb818ae4a43a8ff18f1fedb803, type: 3}
       propertyPath: m_Name
       value: Madera
@@ -7439,6 +7473,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2122832997}
     m_Modifications:
+    - target: {fileID: 1228115380507712, guid: 5007776beb043ae4d8eebe083ac1822f, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1904831276536128, guid: 5007776beb043ae4d8eebe083ac1822f, type: 3}
       propertyPath: m_Name
       value: Pino 5
@@ -7739,6 +7777,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1462766550}
     m_Modifications:
+    - target: {fileID: 1371848690957050, guid: d5f13229abd060d4e82aafd4843a0bef, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1580924806186536, guid: d5f13229abd060d4e82aafd4843a0bef, type: 3}
       propertyPath: m_Name
       value: Piedra 3
@@ -7922,7 +7964,7 @@ GameObject:
   - component: {fileID: 1483184744}
   m_Layer: 0
   m_Name: Mesh243 (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7935,7 +7977,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483184742}
   m_LocalRotation: {x: 0.023080472, y: 0.49176934, z: 0.020099143, w: 0.8701875}
-  m_LocalPosition: {x: -3.023, y: -1.162, z: -0.668}
+  m_LocalPosition: {x: -3.02, y: -1.01, z: -0.66}
   m_LocalScale: {x: 0.256, y: 0.25600004, z: 0.256}
   m_Children: []
   m_Father: {fileID: 862653990}
@@ -8028,6 +8070,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2122832997}
     m_Modifications:
+    - target: {fileID: 1700780402928480, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1714963064719984, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
       propertyPath: m_Name
       value: Pino 4
@@ -8195,8 +8241,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544965123}
-  m_LocalRotation: {x: 0.19119492, y: 0.016982034, z: -0.012725115, w: 0.9813227}
-  m_LocalPosition: {x: -158.7, y: 80.13, z: -250.27}
+  m_LocalRotation: {x: 0.19119492, y: 0.016981928, z: -0.012725094, w: 0.9813227}
+  m_LocalPosition: {x: -158.71228, y: 80.13, z: -110.671585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 494109975}
@@ -8213,6 +8259,10 @@ PrefabInstance:
     - target: {fileID: 1559670191386444, guid: 0a44ee53582c21c4690f3ffb7ba6e225, type: 3}
       propertyPath: m_Name
       value: Piedra 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862490389155274, guid: 0a44ee53582c21c4690f3ffb7ba6e225, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4604568198390550, guid: 0a44ee53582c21c4690f3ffb7ba6e225, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8620,6 +8670,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2122832997}
     m_Modifications:
+    - target: {fileID: 1700780402928480, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1714963064719984, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
       propertyPath: m_Name
       value: Pino 1
@@ -8831,6 +8885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Piedra 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1860703546445676, guid: 55ca6c69149867345a44056719ed70b0, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4508918380756680, guid: 55ca6c69149867345a44056719ed70b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.031992
@@ -8896,6 +8954,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2122832997}
     m_Modifications:
+    - target: {fileID: 1700780402928480, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1714963064719984, guid: 8002d088fbbbf894f9c06f7f21d90406, type: 3}
       propertyPath: m_Name
       value: Pino 2

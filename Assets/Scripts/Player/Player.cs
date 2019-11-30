@@ -77,11 +77,9 @@ public class Player : Character
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Piso tierra");
             currentJumps = 0;
             animator.SetBool("grounding", true);
         }
-        Debug.Log("Grounding Enter: "+animator.GetBool("grounding"));
     }
 
     void OnCollisionExit(Collision collision)
@@ -90,7 +88,6 @@ public class Player : Character
         {
             animator.SetBool("grounding", false);
         }
-        Debug.Log("Grounding Exit: "+animator.GetBool("grounding"));
     }
 
     void OnTriggerEnter(Collider col)
