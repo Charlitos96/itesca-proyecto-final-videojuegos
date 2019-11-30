@@ -15,12 +15,17 @@ public class Score : MonoBehaviour
         textScore = GetComponent<Text>();
     }
 
+    public void Refresh()
+    {
+        textScore.text = $"x {GetScore}";
+    }
+
     public void SetScore(int points)
     {
         if(points >= 0)
         {
             score = points;
-            textScore.text = $"x {GetScore}";
+            //textScore.text = $"x {GetScore}";
         }
     }
     public void AddPoints(int points)
@@ -28,7 +33,7 @@ public class Score : MonoBehaviour
         if(points > 0)
         {
             score += points;
-            textScore.text = $"x {GetScore}";
+            //textScore.text = $"x {GetScore}";
         }
     }
 

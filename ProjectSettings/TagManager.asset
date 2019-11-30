@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Enemy
   - Ground
+  - Portal
+  - Damage
   layers:
   - Default
   - TransparentFX
