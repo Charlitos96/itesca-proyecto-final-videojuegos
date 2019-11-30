@@ -139,7 +139,7 @@ public class BattleSystem : MonoBehaviour {
                 if (playerUnit.defended) {
                     textoDialogo.text = "¡Ataque defendido!";
                 } else {
-                    textoDialogo.text = "!" + enemyUnit.unitName + "a taca!";
+                    textoDialogo.text = "!" + enemyUnit.unitName + " ataca!";
                 }
             } else {
                 textoDialogo.text = "!" + enemyUnit.unitName + " ha fallado!";
