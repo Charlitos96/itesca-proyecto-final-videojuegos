@@ -47,9 +47,10 @@ MonoBehaviour:
   unitName: "Maga m\xE1gica"
   hp: 300
   initialHp: 300
-  dmg: 400
+  dmg: 30
   dfs: 15
   pos: 1
+  defended: 0
 --- !u!1001 &7103274479202298601
 PrefabInstance:
   m_ObjectHideFlags: 0
