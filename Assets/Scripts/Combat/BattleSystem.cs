@@ -55,23 +55,33 @@ public class BattleSystem : MonoBehaviour {
         System.Random rnd = new System.Random ();
         int n = rnd.Next (1, 101);
         if (n >= 90) {
-            textoDialogo.text = "Ataque fallido.";
+            textoDialogo.text = "Ataque fallido...";
         } else {
             isDead = enemyUnit.recibirDmg (playerUnit.dmg);
             enemyHUD.setHP (enemyUnit.initialHp);
-            textoDialogo.text = "Ataque realizado con éxito";
+            textoDialogo.text = "¡Ataque realizado con éxito!";
         }
         yield return new WaitForSeconds (2f);
         if (isDead) {
-            //TERMINAR BATALLA WON
+            state = BattleState.WON;
+            EndBattle ();
         } else {
             state = BattleState.ENEMYTURN;
             StartCoroutine (EnemyTurn ());
         }
     }
 
-    public void EnemyTurn () {
+    void EndBattle () {
+        if (state == BattleState.WON) {
+            textoDialogo.text = "¡GANASTE LA BATALLA!";
+        } else {
+            textoDialogo.text = "Perdiste la batalla...";
+        }
+    }
 
+    IEnumerator EnemyTurn () {
+        textoDialogo.text = "Turno de " + enemyUnit.unitName;
+        yield return new WaitForSeconds(2f);
     }
 
 }
