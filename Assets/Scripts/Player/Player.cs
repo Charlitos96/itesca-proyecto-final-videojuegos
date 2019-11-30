@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Core.Movement;
 
 public class Player : Character
@@ -117,6 +118,7 @@ public class Player : Character
         if(col.CompareTag("Portal"))
         {
             Debug.Log("Next Level!");
+            SceneManager.LoadScene("Final");
         }
         /*
         if(col.CompareTag("death"))
