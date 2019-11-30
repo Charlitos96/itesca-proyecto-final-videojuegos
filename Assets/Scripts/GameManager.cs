@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject textoInteractuar;
     [SerializeField]
-    Player player;
-    [SerializeField]
     Score score;
+    [SerializeField]
+    Player player;
     [SerializeField]
     Health health;
     GameData gameData;
@@ -42,6 +42,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         //instance = this;
+    }
+
+    void OnLevelWasLoaded(int level)
+    {
+        player = GameObject.Find("Player").GetComponent<Player>();
+        player.Health = instance.GetHealth.GetHealth;
+        
     }
 
     void Start()
@@ -83,7 +90,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         GetScore.Refresh();
-        GetHealth.RefreshHealth(player.Health);
+        if(player != null)
+        {
+            GetHealth.RefreshHealth(player.Health);
+        }
     }
 
     public void RestartLevel()

@@ -31,7 +31,7 @@ public class Player : Character
         talking = false;
         alive = true;
         currentJumps = 0;
-        animator.SetBool("alive", alive); // 1
+        //animator.SetBool("alive", alive); // 1
     }
 
     bool canTalk;
@@ -49,7 +49,7 @@ public class Player : Character
             Relive();
         }
         btnTalk = Input.GetButtonDown("Talk");
-        //animator.SetBool("alive", alive);
+        animator.SetBool("alive", alive);
     }
 
     public override void Move()
@@ -75,7 +75,7 @@ public class Player : Character
         {
             Health = 80;
             alive = true;
-            animator.SetBool("alive", alive); // 2
+            //animator.SetBool("alive", alive); // 2
             GameManager.instance.RestartLevel();
         }
     }
@@ -119,11 +119,11 @@ public class Player : Character
             {
                 Damage damage = col.GetComponent<Damage>();
                 Health -= damage.GetDamage;
-                if(Health < 0)
+                if(Health <= 0)
                 {
                     Health = 0;
                     alive = false;
-                    animator.SetBool("alive", alive); // 3
+                    animator.SetTrigger("die");
                 }
                 animator.SetTrigger("damage");
                 GameManager.instance.GetHealth.RefreshHealth(Health);
