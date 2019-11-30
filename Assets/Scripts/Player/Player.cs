@@ -56,6 +56,7 @@ public class Player : Character
             //rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             currentJumps++;
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            //animator.SetTrigger("jump"); // Brinca muy feo
         }
         /*
         //grounding
@@ -70,6 +71,26 @@ public class Player : Character
             rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         */
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Piso tierra");
+            currentJumps = 0;
+            animator.SetBool("grounding", true);
+        }
+        Debug.Log("Grounding Enter: "+animator.GetBool("grounding"));
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            animator.SetBool("grounding", false);
+        }
+        Debug.Log("Grounding Exit: "+animator.GetBool("grounding"));
     }
 
     void OnTriggerEnter(Collider col)
@@ -92,10 +113,13 @@ public class Player : Character
             }
             GameManager.instance.GetHealth.RefreshHealth(Health);
         }
-        if(col.CompareTag("Ground"))
+        if(col.CompareTag("Damage"))
         {
-            Debug.Log("Piso tierra");
-            currentJumps = 0;
+            Debug.Log("Auchi D: :c");
+        }
+        if(col.CompareTag("Portal"))
+        {
+            Debug.Log("Next Level!");
         }
         /*
         if(col.CompareTag("death"))
